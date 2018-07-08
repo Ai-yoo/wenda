@@ -25,7 +25,7 @@ import java.util.*;
  * @Date 2018/7/7
  * @Time 10:39
  */
-@Controller
+//@Controller
 public class IndexController {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
