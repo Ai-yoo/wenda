@@ -18,7 +18,7 @@ import java.util.Date;
  * @Date 2018/7/7
  * @Time 17:17
  */
-@Aspect
+//@Aspect
 @Component
 public class LogAspect {
 

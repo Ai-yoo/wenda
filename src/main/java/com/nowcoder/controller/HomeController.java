@@ -1,6 +1,7 @@
 package com.nowcoder.controller;
 
 import com.nowcoder.aspect.LogAspect;
+import com.nowcoder.model.HostHolder;
 import com.nowcoder.model.Question;
 import com.nowcoder.model.ViewObject;
 import com.nowcoder.service.QuestionService;

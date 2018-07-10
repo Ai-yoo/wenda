@@ -54,8 +54,8 @@ public class UserService {
             map.put("msg", "密码不能为空");
             return map;
         }
+        System.out.println("调用selectByName之前");
         User user = userDAO.selectByName(username);
-        System.out.println(user.toString() + "注册");
         if (user != null) {
             map.put("msg", "用户名已经被注册");
             return map;
@@ -90,7 +90,8 @@ public class UserService {
             return map;
         }
 
-        if (WendaUtil.MD5(password + user.getSalt()).equals(user.getPassword())) {
+        if (!WendaUtil.MD5(password + user.getSalt()).equals(user.getPassword())) {
+            System.out.println("加密后的密码：" + WendaUtil.MD5(password + user.getSalt()));
             map.put("msg", "密码错误");
             return map;
         }
@@ -104,11 +105,20 @@ public class UserService {
         loginTicket.setUserId(userId);
         Date now = new Date();
         now.setTime(3600 * 24 * 100 + now.getTime());
+        System.out.println("时间上限："+now);
         loginTicket.setExpired(now);
         loginTicket.setStatus(0);
         loginTicket.setTicket(UUID.randomUUID().toString().replaceAll("-", ""));
         loginTicketDAO.addTicket(loginTicket);
         return loginTicket.getTicket();
+    }
+
+    public void logout(String ticket) {
+        loginTicketDAO.updateStatus(ticket, 1);
+    }
+
+    public User selectBuName(String name) {
+        return userDAO.selectByName(name);
     }
 
 }
