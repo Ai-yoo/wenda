@@ -2,6 +2,7 @@ package com.nowcoder.service;
 
 import com.nowcoder.dao.MessageDAO;
 import com.nowcoder.model.Message;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,13 @@ public class MessageService {
     public List<Message> getConversationDetail(String conversationId, int offset, int limit) {
         return messageDAO.getConversationDetail(conversationId, offset, limit);
     }
+
+    public List<Message> getConversationList(int userId, int offset, int limit) {
+        return messageDAO.getConversationList(userId, offset, limit);
+    }
+
+    public int getConversationUnreadCount(String conversationId,int userId){
+        return messageDAO.getConversationUnreadCount(conversationId, userId);
+    }
+
 }

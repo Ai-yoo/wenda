@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +46,22 @@ public class MessageController {
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     @RequestMapping(path = {"/msg/list"}, method = {RequestMethod.GET})
-    public String getConversationList() {
+    public String getConversationList(Model model) {
+        if (hostHolder.getUser() == null) {
+            return "redirect:/reglogin";
+        }
+        int localUserId = hostHolder.getUser().getId();
+        List<Message> conversationList = messageService.getConversationList(localUserId, 0, 10);
+        List<ViewObject> conversations = new ArrayList<>();
+        for (Message message : conversationList) {
+            ViewObject vo = new ViewObject();
+            vo.set("conversation", message);
+            int targetId = message.getFromId() == localUserId ? message.getToId() : message.getFromId();
+            vo.set("user", userService.getUser(targetId));
+            vo.set("unread", messageService.getConversationUnreadCount(message.getConversationId(), localUserId));
+            conversations.add(vo);
+        }
+        model.addAttribute("conversations", conversations);
         return "letter";
     }
 
