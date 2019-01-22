@@ -40,6 +40,9 @@ public class QuestionService {
         return questionDAO.selectLatestQuestions(userId, offset, limit);
     }
 
+    public List<Question> selectQuestions() {
+        return questionDAO.selectQuestions();
+    }
 
     public Question selectById(int id) {
         return questionDAO.selectById(id);
@@ -47,5 +50,9 @@ public class QuestionService {
 
     public void updateCommentCount(int count, int id) {
         questionDAO.updateCommentCount(count, id);
+    }
+
+    public int getQuestionNum() {
+        return questionDAO.getQuestionNum();
     }
 }

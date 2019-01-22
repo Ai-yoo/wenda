@@ -31,11 +31,16 @@ public interface QuestionDAO {
                                          @Param("limit") int limit);
 
 
+    @Select({"select", SELECT_FIELDS, "from ", TABLE_NAME ,"order by created_date"})
+    List<Question> selectQuestions();
+
     @Select({"select", SELECT_FIELDS, "from", TABLE_NAME, "where id=#{id}"})
     Question selectById(int id);
 
     @Update({"update", TABLE_NAME, "set comment_count=#{commentCount} where id=#{id}"})
     void updateCommentCount(@Param("commentCount") int commentCount, @Param("id") int id);
 
+    @Select({"select count(*) from", TABLE_NAME})
+    int getQuestionNum();
 
 }
