@@ -1,4 +1,6 @@
 #parse("header.html")
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
 <div class="zg-wrap zu-main clearfix " role="main">
     <div class="zu-main-content">
         <div class="zu-main-content-inner">
@@ -44,14 +46,14 @@
                                             <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
                                                data-bind-votecount="">4168</a></div>
                                         <div class="zm-item-answer-author-info">
-                                            <a class="author-link" data-tip="p$b$amuro1230" target="_blank"
+                                            <a class="author-link" data- tip="p$b$amuro1230" target="_blank"
                                                href="/user/$!{vo.user.id}">$!{vo.user.name}</a>
                                             ，$date.format('yyyy年MM月dd日 HH:mm:ss',$!{vo.question.createdDate})
                                         </div>
                                         <div class="zm-item-vote-info" data-votecount="4168" data-za-module="VoteInfo">
                                                 <span class="voters text">
                                                     <a href="#" class="more text">
-                                                        <span class="js-voteCount">4168</span>&nbsp;人赞同</a></span>
+                                                        <span class="js-voteCount"></span>&nbsp;人赞同</a></span>
                                         </div>
                                         <div class="zm-item-rich-text expandable js-collapse-body"
                                              data-resourceid="123114" data-action="/answer/content"
