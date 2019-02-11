@@ -75,12 +75,12 @@ public class SettingController {
     public String setPass(@RequestParam("password") String password, HttpSession session) {
         String username = session.getAttribute("username").toString();
         System.out.println("密码是"+password);
-        User user = userDAO.selectByName(username);
+        User user = userService.selectByName(username);
         System.out.println(user.toString());
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
         user.setPassword(WendaUtil.MD5(password + user.getSalt()));
         System.out.println(user.toString());
-        userDAO.updatePassword(user);
+        userService.updatePassword(user);
         return "login";
     }
 
