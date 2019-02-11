@@ -54,7 +54,6 @@ public class UserService {
             map.put("msg", "密码不能为空");
             return map;
         }
-        System.out.println("调用selectByName之前");
         User user = userDAO.selectByName(username);
         if (user != null) {
             map.put("msg", "用户名已经被注册");
@@ -112,6 +111,10 @@ public class UserService {
         loginTicket.setTicket(UUID.randomUUID().toString().replaceAll("-", ""));
         loginTicketDAO.addTicket(loginTicket);
         return loginTicket.getTicket();
+    }
+
+    public String updatePassword(User user) {
+        return "";
     }
 
     public void logout(String ticket) {

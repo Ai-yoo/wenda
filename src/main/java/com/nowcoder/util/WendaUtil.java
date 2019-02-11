@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by nowcoder on 2016/7/3.
@@ -13,7 +14,7 @@ import java.util.Map;
 public class WendaUtil {
     private static final Logger logger = LoggerFactory.getLogger(WendaUtil.class);
 
-    public static int ANONYMOUS_USERID = 3;
+    public static int ANONYMOUS_USERID = 17;
     public static int SYSTEM_USERID = 4;
 
     public static String getJSONString(int code) {
@@ -27,6 +28,15 @@ public class WendaUtil {
         json.put("code", code);
         json.put("msg", msg);
         return json.toJSONString();
+    }
+
+    /**
+     * 获取随机验证码
+     * @return
+     */
+    public static String getRanString() {
+        StringBuffer str = new StringBuffer();
+        return UUID.randomUUID().toString().substring(0, 4);
     }
 
     public static String MD5(String key) {
