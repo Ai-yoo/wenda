@@ -44,9 +44,6 @@ public class SearchController {
         try {
             List<Question> questionList = searchService.searchQuestion(keyword, offset, count,
                     "<em>", "</em>");
-//            for (Question q : questionList) {
-//                System.out.println(q.getTitle() + q.getContent() + q.getUserId() + q.getCreatedDate());
-//            }
             List<ViewObject> vos = new ArrayList<>();
             for (Question question : questionList) {
                 Question q = questionService.selectById(question.getId());

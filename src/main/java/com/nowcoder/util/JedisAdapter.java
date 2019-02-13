@@ -31,6 +31,12 @@ public class JedisAdapter implements InitializingBean {
         pool = new JedisPool("redis://localhost:6379");
     }
 
+    /**
+     * 点赞和踩使用set实现，因为保证点赞数的唯一性
+     * @param key
+     * @param value
+     * @return
+     */
     public long sadd(String key, String value) {
         Jedis jedis = null;
         try {
@@ -46,6 +52,12 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    /**
+     * 删除redis中set的一个元素。因为涉及到一个问题的点赞和踩，有踩，点赞数就会减一，点赞数加一，踩的数量就会减一
+     * @param key
+     * @param value
+     * @return
+     */
     public long srem(String key, String value) {
         Jedis jedis = null;
         try {
@@ -61,6 +73,11 @@ public class JedisAdapter implements InitializingBean {
         return 0;
     }
 
+    /**
+     * 统计数量
+     * @param key
+     * @return
+     */
     public long scard(String key) {
         Jedis jedis = null;
         try {
@@ -90,6 +107,8 @@ public class JedisAdapter implements InitializingBean {
         }
         return false;
     }
+
+
     public List<String> brpop(int timeout, String key) {
         Jedis jedis = null;
         try {

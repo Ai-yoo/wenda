@@ -44,6 +44,7 @@ public class LikeService {
 
     public long disLike(int userId, int entityType, int entityId) {
         String disLikeKey = RedisKeyUtil.getDisLikeKey(entityType, entityId);
+        System.out.println("dis："+disLikeKey);
         jedisAdapter.sadd(disLikeKey, String.valueOf(userId));
 
         String likeKey = RedisKeyUtil.getLikeKey(entityType, entityId);

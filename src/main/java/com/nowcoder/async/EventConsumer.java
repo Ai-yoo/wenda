@@ -51,6 +51,9 @@ public class EventConsumer implements InitializingBean, ApplicationContextAware 
             }
         }
 
+        /**
+         * 这里可以开多线程
+         */
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
