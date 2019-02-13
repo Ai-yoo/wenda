@@ -88,10 +88,10 @@ public class LoginController {
                     cookie.setMaxAge(3600*24*5);
                 }
                 response.addCookie(cookie);
-                //发件人
-                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
-                        .setExt("username", username).setExt("email", "1958321982@qq.com")
-                        .setActorId(Integer.parseInt(map.get("userId"))));
+                //任务队列
+//                eventProducer.fireEvent(new EventModel(EventType.LOGIN)
+//                        .setExt("username", username).setExt("email", "1958321982@qq.com")
+//                        .setActorId(Integer.parseInt(map.get("userId"))));
                 if (StringUtils.isNotBlank(next)) {
                     return "redirect:" + next;
                 }
@@ -112,5 +112,13 @@ public class LoginController {
         userService.logout(ticket);
         return "redirect:/";
     }
+
+    @RequestMapping(path = {"/notlogin"})
+    public String notlogin() {
+        return "findPassword";
+    }
+
+
+
 
 }
