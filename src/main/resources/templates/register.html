@@ -1,3 +1,9 @@
+<!--
+  Created by IntelliJ IDEA.
+  author: duzhentong
+  Date: 2019/4/5
+  Time: 11:52
+-->
 <!DOCTYPE html>
 <html lang="zh-CN" class="is-AppPromotionBarVisible cssanimations csstransforms csstransitions flexbox no-touchevents no-mobile">
 <head>
@@ -26,10 +32,13 @@
         </div>
         <div class="desk-front sign-flow clearfix sign-flow-simple">
             <div class="view view-signin" data-za-module="SignInForm" style="display: block;">
-                <form novalidate="novalidate" method="post" action="/login/" id="regloginform">
+                <form novalidate="novalidate" method="post" action="/reg/" id="regloginform">
                     <div class="group-inputs">
                         <div class="email input-wrapper">
-                            <input type="text" name="username" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="">
+                            <input type="text" name="email" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="">
+                        </div>
+                        <div class="email input-wrapper">
+                            <input type="text" name="username" aria-label="用户名" placeholder="用户名" required="">
                         </div>
                         <div class="input-wrapper">
                             <input type="password" name="password" aria-label="密码" placeholder="密码" required="">
@@ -43,8 +52,9 @@
                     </div>
                     <input type="hidden" name="next" value="$!{next}">
                     <div class="button-wrapper command clearfix">
-                        <button class="sign-button submit" type="submit" onclick="document.getElementById('regloginform').action='/login/'">登录</button>
+                        <!--<button class="sign-button submit" type="submit" onclick="document.getElementById('regloginform').action='/login/'">登录</button>-->
                         <!--<button class="sign-button submit" type="submit" onclick="document.getElementById('regloginform').action='/reg/'">注册</button>-->
+                        <input type="submit" class="sign-button submit">
                     </div>
                     <div class="signin-misc-wrapper clearfix">
                         <label class="remember-me">

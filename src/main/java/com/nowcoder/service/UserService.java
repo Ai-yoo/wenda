@@ -40,18 +40,23 @@ public class UserService {
     /**
      * 为什么返回值使用map，因为，用户可能登录成功，失败，用户名密码错误等等情况，使用map
      * 存储，如果登录成功，直接返回一个空的map即可
+     *
      * @param username
      * @param password
      * @return
      */
-    public Map<String, String> register(String username, String password) {
-        Map<String, String> map = new HashMap<String,String>();
+    public Map<String, String> register(String username, String email, String password,int is_use) {
+        Map<String, String> map = new HashMap<String, String>();
         if (StringUtils.isBlank(username)) {
             map.put("msg", "用户名不能为空");
             return map;
         }
         if (StringUtils.isBlank(password)) {
             map.put("msg", "密码不能为空");
+            return map;
+        }
+        if (StringUtils.isBlank(email)) {
+            map.put("msg", "邮箱不能为空");
             return map;
         }
         User user = userDAO.selectByName(username);
@@ -62,6 +67,8 @@ public class UserService {
 
         user = new User();
         user.setName(username);
+        user.setEmail(email);
+        user.setIsUse(is_use);
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
         user.setHeadUrl(String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000)));
         user.setPassword(WendaUtil.MD5(password + user.getSalt()));

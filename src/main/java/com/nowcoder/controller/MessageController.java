@@ -92,7 +92,7 @@ public class MessageController {
             if (hostHolder.getUser() == null) {
                 return WendaUtil.getJSONString(999, "未登录");
             }
-            User user = userService.selectBuName(toName);
+            User user = userService.selectByName(toName);
             if (user == null) {
                 return WendaUtil.getJSONString(1, "用户不存在");
             }

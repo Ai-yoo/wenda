@@ -29,6 +29,8 @@ import java.util.Map;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
+    private static final int IS_USE = 1;
+
     @Autowired
     UserService userService;
 
@@ -38,16 +40,18 @@ public class LoginController {
     @RequestMapping(path = {"/reg/"}, method = {RequestMethod.POST})
     public String reg(Model model, @RequestParam("username") String username,
                       @RequestParam("password") String password,
+                      @RequestParam("email") String email,
                       @RequestParam("next") String next,
-                      @RequestParam(value="rememberme", defaultValue = "false") boolean rememberme,
+                      @RequestParam(value = "rememberme", defaultValue = "false") boolean rememberme,
                       HttpServletResponse response) {
+        System.out.println("----------------");
         try {
-            Map<String, String> map = userService.register(username, password);
+            Map<String, String> map = userService.register(username, email, password, IS_USE);
             if (map.containsKey("ticket")) {
                 Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
                 cookie.setPath("/");
                 if (rememberme) {
-                    cookie.setMaxAge(3600*24*5);
+                    cookie.setMaxAge(3600 * 24 * 5);
                 }
                 response.addCookie(cookie);
                 if (StringUtils.isNotBlank(next)) {
@@ -56,13 +60,13 @@ public class LoginController {
                 return "redirect:/";
             } else {
                 model.addAttribute("msg", map.get("msg"));
-                return "login";
+                return "register";
             }
 
         } catch (Exception e) {
             logger.error("注册异常" + e.getMessage());
             model.addAttribute("msg", "服务器错误");
-            return "login";
+            return "register";
         }
     }
 
@@ -72,20 +76,27 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping(path = {"/register"}, method = {RequestMethod.GET})
+    public String registerPage(Model model, @RequestParam(value = "next", required = false) String next) {
+        model.addAttribute("next", next);
+        return "register";
+    }
+
     @RequestMapping(path = {"/login/"}, method = {RequestMethod.POST})
     public String login(Model model, @RequestParam("username") String username,
                         @RequestParam("password") String password,
-                        @RequestParam(value="next", required = false) String next,
-                        @RequestParam(value="rememberme", defaultValue = "false") boolean rememberme,
+//                        @RequestParam("email") String email,
+                        @RequestParam(value = "next", required = false) String next,
+                        @RequestParam(value = "rememberme", defaultValue = "false") boolean rememberme,
                         HttpServletResponse response) {
         try {
             Map<String, String> map = userService.login(username, password);
-            System.out.println("map:"+map.toString());
+            System.out.println("map:" + map.toString());
             if (map.containsKey("ticket")) {
                 Cookie cookie = new Cookie("ticket", map.get("ticket").toString());
                 cookie.setPath("/");
                 if (rememberme) {
-                    cookie.setMaxAge(3600*24*5);
+                    cookie.setMaxAge(3600 * 24 * 5);
                 }
                 response.addCookie(cookie);
                 //任务队列
@@ -117,8 +128,6 @@ public class LoginController {
     public String notlogin() {
         return "findPassword";
     }
-
-
 
 
 }

@@ -9,6 +9,8 @@ public class User {
     private String password;
     private String salt;
     private String headUrl;
+    private String email;
+    private int isUse;
 
     public User() {
 
@@ -18,6 +20,8 @@ public class User {
         this.password = "";
         this.salt = "";
         this.headUrl = "";
+        this.email = "";
+        this.isUse = 0;
     }
 
     public String getName() {
@@ -60,6 +64,22 @@ public class User {
         this.id = id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getIsUse() {
+        return isUse;
+    }
+
+    public void setIsUse(int isUse) {
+        this.isUse = isUse;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -68,6 +88,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
                 ", headUrl='" + headUrl + '\'' +
+                ", email='" + email + '\'' +
+                ", is_use=" + isUse +
                 '}';
     }
 }

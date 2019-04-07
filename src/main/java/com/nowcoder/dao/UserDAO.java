@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
 public interface UserDAO {
 
     String TABLE_NAME = " user ";
-    String INSERT_FIELDS = " name,password,salt,head_url ";
+    String INSERT_FIELDS = " name,password,salt,head_url,email,is_use ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
 
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values(#{name},#{password},#{salt},#{headUrl})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values(#{name},#{password},#{salt},#{headUrl},#{email},#{isUse})"})
     int addUser(User user);
 
     @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, "where id=#{id}"})
