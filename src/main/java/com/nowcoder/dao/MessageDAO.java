@@ -16,12 +16,12 @@ import java.util.List;
 @Mapper
 public interface MessageDAO {
     String TABLE_NAME = "message";
-    String INSERT_FIELDS = " from_Id,to_Id,content,created_date,has_read,conversation_id";
+    String INSERT_FIELDS = " from_Id,to_Id,content,created_date,has_read,conversation_id,state";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
 
     @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") " +
-            "values(#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId})"})
+            "values(#{fromId},#{toId},#{content},#{createdDate},#{hasRead},#{conversationId},#{state})"})
     int addMessage(Message message);
 
 
@@ -45,5 +45,6 @@ public interface MessageDAO {
     @Select({"select count(id) from", TABLE_NAME, "where has_read=0 and to_id=#{userId} and conversation_id=#{conversationId}"})
     int getConversationUnreadCount(@Param("conversationId") String conversationId,
                                    @Param("userId") int userId);
+
 
 }

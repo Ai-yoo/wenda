@@ -17,11 +17,11 @@ import java.util.List;
 public interface QuestionDAO {
 
     String TABLE_NAME = " question ";
-    String INSERT_FIELDS = " title,content,created_date,user_id,comment_count ";
+    String INSERT_FIELDS = " title,content,created_date,user_id,comment_count,state ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
 
-    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values(#{title},#{content},#{createdDate},#{userId},#{commentCount})"})
+    @Insert({"insert into ", TABLE_NAME, "(", INSERT_FIELDS, ") values(#{title},#{content},#{createdDate},#{userId},#{commentCount},#{state})"})
     int addQuestion(Question question);
 
 

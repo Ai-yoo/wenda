@@ -10,7 +10,7 @@ public class User {
     private String salt;
     private String headUrl;
     private String email;
-    private int isUse;
+    private int state;
 
     public User() {
 
@@ -21,7 +21,7 @@ public class User {
         this.salt = "";
         this.headUrl = "";
         this.email = "";
-        this.isUse = 0;
+        this.state = 0;
     }
 
     public String getName() {
@@ -72,13 +72,14 @@ public class User {
         this.email = email;
     }
 
-    public int getIsUse() {
-        return isUse;
+    public int getState() {
+        return state;
     }
 
-    public void setIsUse(int isUse) {
-        this.isUse = isUse;
+    public void setState(int state) {
+        this.state = state;
     }
+
 
     @Override
     public String toString() {
@@ -89,7 +90,7 @@ public class User {
                 ", salt='" + salt + '\'' +
                 ", headUrl='" + headUrl + '\'' +
                 ", email='" + email + '\'' +
-                ", is_use=" + isUse +
+                ", state=" + state +
                 '}';
     }
 }

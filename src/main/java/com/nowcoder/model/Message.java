@@ -17,6 +17,7 @@ public class Message {
     private Date createdDate;
     private int hasRead;
     private String conversationId;
+    private int state;
 
     public int getId() {
         return id;
@@ -71,5 +72,13 @@ public class Message {
             return String.format("%d_%d", fromId, toId);
         }
         return String.format("%d_%d", toId, fromId);
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

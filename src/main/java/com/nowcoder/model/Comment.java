@@ -17,7 +17,7 @@ public class Comment {
     private int entityType;
     private String content;
     private Date createdDate;
-    private int status;
+    private int state;
 
     public int getId() {
         return id;
@@ -68,10 +68,10 @@ public class Comment {
     }
 
     public int getStatus() {
-        return status;
+        return state;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatus(int state) {
+        this.state = state;
     }
 }

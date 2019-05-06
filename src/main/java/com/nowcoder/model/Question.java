@@ -12,6 +12,7 @@ public class Question {
     private Date createdDate;
     private int userId;
     private int commentCount;
+    private int state;
 
     public int getId() {
         return id;
@@ -59,5 +60,13 @@ public class Question {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }
