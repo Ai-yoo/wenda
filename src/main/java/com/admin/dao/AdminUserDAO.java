@@ -1,5 +1,6 @@
 package com.admin.dao;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 
@@ -18,4 +19,7 @@ public interface AdminUserDAO {
 
     @Update("update " + TABLE_NAME + " set state =1 where id=#{id}")
     void updateUserState(int id);
+
+    @Delete("delete from " + TABLE_NAME + "where id=#{id}")
+    void deleteUser(int id);
 }

@@ -19,4 +19,7 @@ public interface AdminLoginDAO {
 
     @Select("select " + SELECT_FIELDS + "from" + TABLE_NAME + "where name=#{name}")
     Root selectByName(String name);
+
+    @Select("select " + SELECT_FIELDS + "from" + TABLE_NAME + "where name=#{name} and password=#{password}")
+    Root selectRoot(String name, String password);
 }

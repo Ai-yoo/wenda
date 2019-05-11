@@ -68,7 +68,7 @@ public class UserService {
         user = new User();
         user.setName(username);
         user.setEmail(email);
-        user.setIsUse(is_use);
+        user.setState(is_use);
         user.setSalt(UUID.randomUUID().toString().substring(0, 5));
         user.setHeadUrl(String.format("http://images.nowcoder.com/head/%dt.png", new Random().nextInt(1000)));
         user.setPassword(WendaUtil.MD5(password + user.getSalt()));

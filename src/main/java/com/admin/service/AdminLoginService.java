@@ -21,6 +21,10 @@ public class AdminLoginService {
     @Autowired
     private AdminLoginDAO adminLoginDAO;
 
+    public Root login(String username,String password) {
+        return adminLoginDAO.selectByName(username);
+    }
+
     public Root getRootByName(String name) {
         return adminLoginDAO.selectByName(name);
     }
