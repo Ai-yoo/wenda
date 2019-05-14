@@ -1,9 +1,6 @@
 package com.admin.controller;
 
-import com.admin.model.Root;
 import com.admin.service.AdminLoginService;
-import com.nowcoder.controller.LoginController;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +27,11 @@ public class AdminLoginController {
     @Autowired
     AdminLoginService adminLoginService;
 
-    @RequestMapping(path = "/rootlogin", method = RequestMethod.POST)
+    @RequestMapping(path = "/root_login/", method = RequestMethod.POST)
     public String rootLogin(Model model, @RequestParam("username") String username) {
-//                            @RequestParam("passord") String password) {
-//        Root root = adminLoginService.getRootByName(username);
-//        if (root.getPassword().equals(password)) {
-//            return ""
-//        }
+        if (username == null) {
+            return "admin-login";
+        }
         return "admin-login";
     }
 
