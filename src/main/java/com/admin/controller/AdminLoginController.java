@@ -28,12 +28,17 @@ public class AdminLoginController {
     AdminLoginService adminLoginService;
 
     @RequestMapping(path = "/root_login/", method = RequestMethod.POST)
-    public String rootLogin(Model model, @RequestParam("username") String username) {
-        if (username == null) {
-            return "admin-login";
+    public String rootLogin(Model model, @RequestParam("username") String username,
+                            @RequestParam("password") String password) {
+        if (adminLoginService.login(username, password)) {
+            return "admin-index";
         }
         return "admin-login";
     }
 
+    @RequestMapping(path = "root_logout", method = RequestMethod.POST)
+    public String rootLogout() {
+        return "admin-index";
+    }
 
 }

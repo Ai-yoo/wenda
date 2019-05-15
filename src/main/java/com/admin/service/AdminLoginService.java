@@ -2,6 +2,7 @@ package com.admin.service;
 
 import com.admin.dao.AdminLoginDAO;
 import com.admin.model.Root;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,18 @@ public class AdminLoginService {
     @Autowired
     private AdminLoginDAO adminLoginDAO;
 
-    public Root login(String username,String password) {
-        return adminLoginDAO.selectByName(username);
+    public boolean login(String username,String password) {
+        if (StringUtils.isBlank(username)) {
+            return false;
+        }
+        if (StringUtils.isBlank(password)) {
+            return false;
+        }
+        Root root = adminLoginDAO.selectByName(username);
+        if (root.getPassword().equals(password)) {
+            return true;
+        }
+        return false;
     }
 
     public Root getRootByName(String name) {

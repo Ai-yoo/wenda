@@ -1,6 +1,8 @@
 package com.admin.dao;
 
+import com.nowcoder.model.User;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
 
@@ -22,4 +24,5 @@ public interface AdminUserDAO {
 
     @Delete("delete from " + TABLE_NAME + "where id=#{id}")
     void deleteUser(int id);
+
 }

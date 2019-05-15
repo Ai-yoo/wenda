@@ -23,4 +23,5 @@ public class AdminUserService {
     public void closeUser(int id) {
         adminUserDAO.updateUserState(id);
     }
+
 }
