@@ -1,6 +1,6 @@
-package com.admin.service;
+package com.nowcoder.admin.service;
 
-import com.admin.dao.AdminUserDAO;
+import com.nowcoder.admin.dao.AdminUserDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

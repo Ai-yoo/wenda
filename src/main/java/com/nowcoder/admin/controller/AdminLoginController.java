@@ -1,6 +1,6 @@
-package com.admin.controller;
+package com.nowcoder.admin.controller;
 
-import com.admin.service.AdminLoginService;
+import com.nowcoder.admin.service.AdminLoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.Cookie;
-import java.util.Map;
 
 /**
  * Created with IDEA
@@ -27,7 +24,7 @@ public class AdminLoginController {
     @Autowired
     AdminLoginService adminLoginService;
 
-    @RequestMapping(path = "/root_login/", method = RequestMethod.POST)
+    @RequestMapping(path = {"/root_login"}, method = {RequestMethod.GET})
     public String rootLogin(Model model, @RequestParam("username") String username,
                             @RequestParam("password") String password) {
         if (adminLoginService.login(username, password)) {
@@ -36,7 +33,7 @@ public class AdminLoginController {
         return "admin-login";
     }
 
-    @RequestMapping(path = "root_logout", method = RequestMethod.POST)
+    @RequestMapping(path = "root_logout", method = RequestMethod.GET)
     public String rootLogout() {
         return "admin-index";
     }

@@ -1,7 +1,7 @@
-package com.admin.service;
+package com.nowcoder.admin.service;
 
-import com.admin.dao.AdminLoginDAO;
-import com.admin.model.Root;
+import com.nowcoder.admin.dao.AdminLoginDAO;
+import com.nowcoder.admin.model.Root;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

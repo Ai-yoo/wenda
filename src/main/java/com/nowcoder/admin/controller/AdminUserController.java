@@ -1,7 +1,6 @@
-package com.admin.controller;
+package com.nowcoder.admin.controller;
 
-import com.admin.service.AdminUserService;
-import com.nowcoder.service.UserService;
+import com.nowcoder.admin.service.AdminUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminUserController {
     @Autowired
     AdminUserService adminUserService;
-    @Autowired
-    UserService userService;
+//    @Autowired
+//    UserService userService;
 
     @RequestMapping(path = "close_user", method = RequestMethod.POST)
     public String closeUser(@RequestParam("ids") int[] ids) {
@@ -23,10 +22,10 @@ public class AdminUserController {
         return "";
     }
 
-    @RequestMapping(path = "add_user", method = RequestMethod.POST)
-    public void addUser(@RequestParam("username") String username,
-                        @RequestParam("password") String password,
-                        @RequestParam("email") String email) {
-        userService.register(username, email, password, 0);
-    }
+//    @RequestMapping(path = "add_user", method = RequestMethod.POST)
+//    public void addUser(@RequestParam("username") String username,
+//                        @RequestParam("password") String password,
+//                        @RequestParam("email") String email) {
+//        userService.register(username, email, password, 0);
+//    }
 }

@@ -1,4 +1,4 @@
-package com.admin.model;
+package com.nowcoder.admin.model;
 
 /**
  * Created with IDEA

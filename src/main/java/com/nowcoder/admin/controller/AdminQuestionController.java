@@ -1,6 +1,6 @@
-package com.admin.controller;
+package com.nowcoder.admin.controller;
 
-import com.admin.service.AdminQuestionService;
+import com.nowcoder.admin.service.AdminQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.admin.dao;
+package com.nowcoder.admin.dao;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -9,17 +9,18 @@ import org.apache.ibatis.annotations.Update;
  *
  * @author duzhentong
  * @Date 2019/5/6
- * @Time 23:47
+ * @Time 23:19
  */
 @Mapper
-public interface AdminMessageDAO {
-    String TABLE_NAME = "message";
-    String INSERT_FIELDS = " from_Id,to_Id,content,created_date,has_read,conversation_id,state";
+public interface AdminQuestionDAO {
+    String TABLE_NAME = " question ";
+    String INSERT_FIELDS = " title,content,created_date,user_id,comment_count,state ";
     String SELECT_FIELDS = " id, " + INSERT_FIELDS;
 
     @Update("update " + TABLE_NAME + " set state=1 where id=#{id}")
-    void updateMessageState(int id);
+    void updateQuestionState(int id);
 
-    @Delete("delete from " + TABLE_NAME + "where id=#{id}")
-    void deleteMessage(int id);
+    @Delete("delete from " + TABLE_NAME + "where id =#{id}")
+    void deleteQuestion(int id);
+
 }

@@ -1,6 +1,6 @@
-package com.admin.dao;
+package com.nowcoder.admin.dao;
 
-import com.admin.model.Root;
+import com.nowcoder.admin.model.Root;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
