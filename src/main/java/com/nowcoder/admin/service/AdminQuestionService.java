@@ -23,4 +23,8 @@ public class AdminQuestionService {
     public void closeQuestion(int id) {
         adminQuestionDAO.deleteQuestion(id);
     }
+
+    public int countQuestion() {
+        return adminQuestionDAO.selectCountQuestion();
+    }
 }

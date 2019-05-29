@@ -2,6 +2,7 @@ package com.nowcoder.admin.dao;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 /**
@@ -22,4 +23,7 @@ public interface AdminMessageDAO {
 
     @Delete("delete from " + TABLE_NAME + "where id=#{id}")
     void deleteMessage(int id);
+
+    @Select("select count(*) from message")
+    int selectCountMessage();
 }

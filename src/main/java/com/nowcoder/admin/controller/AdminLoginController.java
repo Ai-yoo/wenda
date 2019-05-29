@@ -1,6 +1,6 @@
 package com.nowcoder.admin.controller;
 
-import com.nowcoder.admin.service.AdminLoginService;
+import com.nowcoder.admin.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +24,44 @@ public class AdminLoginController {
     @Autowired
     AdminLoginService adminLoginService;
 
-    @RequestMapping(path = {"/root_login"}, method = {RequestMethod.GET})
+    @Autowired
+    AdminCommentService adminCommentService;
+
+    @Autowired
+    AdminQuestionService adminQuestionService;
+
+    @Autowired
+    AdminUserService adminUserService;
+
+    @Autowired
+    AdminMessageService adminMessageService;
+
+    @RequestMapping(path = {"/root_login"}, method = {RequestMethod.POST})
     public String rootLogin(Model model, @RequestParam("username") String username,
                             @RequestParam("password") String password) {
         if (adminLoginService.login(username, password)) {
+            int user_num = adminUserService.countUser();
+            int comment_num = adminCommentService.countComment();
+            int question_num = adminQuestionService.countQuestion();
+            int message_num = adminMessageService.countMessage();
+            model.addAttribute("userNum", user_num);
+            model.addAttribute("comNum", comment_num);
+            model.addAttribute("quesNum", question_num);
+            model.addAttribute("messNum", message_num);
+            model.addAttribute("name", username);
             return "admin-index";
         }
-        return "admin-login";
+        return "lyear_pages_login";
+    }
+
+    @RequestMapping(path = {"/admin"}, method = {RequestMethod.GET})
+    public String index() {
+        return "lyear_pages_login";
     }
 
     @RequestMapping(path = "root_logout", method = RequestMethod.GET)
     public String rootLogout() {
-        return "admin-index";
+        return "lyear_pages_login";
     }
 
 }

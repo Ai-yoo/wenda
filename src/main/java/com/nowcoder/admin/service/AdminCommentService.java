@@ -1,5 +1,6 @@
 package com.nowcoder.admin.service;
 
+import com.nowcoder.admin.dao.AdminCommentDAO;
 import com.nowcoder.admin.dao.AdminMessageDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +19,13 @@ public class AdminCommentService {
     private static final Logger logger = LoggerFactory.getLogger(AdminCommentService.class);
 
     @Autowired
-    private AdminMessageDAO adminMessageDAO;
+    private AdminCommentDAO adminCommentDAO;
 
     public void closeComment(int id) {
-        adminMessageDAO.updateMessageState(id);
+        adminCommentDAO.updateCommentState(id);
+    }
+
+    public int countComment() {
+        return adminCommentDAO.selectCountComment();
     }
 }

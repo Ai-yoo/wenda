@@ -6,16 +6,14 @@ import com.nowcoder.async.EventProducer;
 import com.nowcoder.async.EventType;
 import com.nowcoder.dao.UserDAO;
 import com.nowcoder.model.User;
+import com.nowcoder.model.ViewObject;
 import com.nowcoder.service.UserService;
 import com.nowcoder.service.WendaService;
 import com.nowcoder.util.WendaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Random;
@@ -44,11 +42,24 @@ public class SettingController {
     EventProducer eventProducer;
 
 
-    @RequestMapping(path = {"/setting"}, method = {RequestMethod.GET})
-    @ResponseBody
-    public String setting(HttpSession httpSession) {
-        return "Setting OK" + wendaService.getMessage(1);
+    @RequestMapping(path = {"/setting/{userId}"}, method = {RequestMethod.GET})
+    public String settingPage(Model model, @PathVariable("userId") int userId) {
+        model.addAttribute("userId", userId);
+        return "setting";
+    }
 
+    @RequestMapping(path = "/updateUserInfo", method = RequestMethod.POST)
+    public String setting(@RequestParam("username") String username,
+                          @RequestParam("password") String password,
+                          @RequestParam("email") String email,
+                          @RequestParam("userId") String userId) {
+        int userid = Integer.valueOf(userId);
+        User user = userService.getUser(userid);
+        user.setName(username);
+        user.setPassword(WendaUtil.MD5(password + user.getSalt()));
+        user.setEmail(email);
+        userService.updateUserInfo(user);
+        return "login";
     }
 
     @RequestMapping(path = {"/sendmsg"}, method = {RequestMethod.POST})

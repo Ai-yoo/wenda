@@ -23,4 +23,8 @@ public class AdminMessageService {
     public void closeMessage(int id) {
         adminMessageDAO.updateMessageState(id);
     }
+
+    public int countMessage() {
+        return adminMessageDAO.selectCountMessage();
+    }
 }

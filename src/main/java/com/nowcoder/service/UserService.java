@@ -95,7 +95,10 @@ public class UserService {
             map.put("msg", "用户名不存在");
             return map;
         }
-
+        if (user.getState() == 1) {
+            map.put("msg", "该用户已被禁用");
+            return map;
+        }
         if (!WendaUtil.MD5(password + user.getSalt()).equals(user.getPassword())) {
             System.out.println("加密后的密码：" + WendaUtil.MD5(password + user.getSalt()));
             map.put("msg", "密码错误");
@@ -132,4 +135,7 @@ public class UserService {
         return userDAO.selectByName(name);
     }
 
+    public void updateUserInfo(User user) {
+        userDAO.updateUserInfo(user);
+    }
 }

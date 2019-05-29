@@ -29,7 +29,7 @@ import java.util.Map;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    private static final int IS_USE = 1;
+    private static final int IS_USE = 0;
 
     @Autowired
     UserService userService;
