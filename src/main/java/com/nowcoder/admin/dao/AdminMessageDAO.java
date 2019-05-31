@@ -1,9 +1,12 @@
 package com.nowcoder.admin.dao;
 
+import com.nowcoder.model.Message;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 /**
  * Created with IDEA
@@ -21,9 +24,15 @@ public interface AdminMessageDAO {
     @Update("update " + TABLE_NAME + " set state=1 where id=#{id}")
     void updateMessageState(int id);
 
+    @Update("update " + TABLE_NAME + " set state=0 where id=#{id}")
+    void updateMessageState0(int id);
+
     @Delete("delete from " + TABLE_NAME + "where id=#{id}")
     void deleteMessage(int id);
 
     @Select("select count(*) from message")
     int selectCountMessage();
+
+    @Select({"select", SELECT_FIELDS, "from ", TABLE_NAME })
+    List<Message> selectMessages();
 }

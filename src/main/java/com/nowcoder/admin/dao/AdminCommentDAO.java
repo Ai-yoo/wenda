@@ -1,9 +1,12 @@
 package com.nowcoder.admin.dao;
 
+import com.nowcoder.model.Comment;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 /**
  * Created with IDEA
@@ -21,10 +24,16 @@ public interface AdminCommentDAO {
     @Update("update " + TABLE_NAME + " set state=1 where id=#{id}")
     void updateCommentState(int id);
 
+    @Update("update " + TABLE_NAME + " set state=0 where id=#{id}")
+    void updateCommentState0(int id);
+
     @Delete("delete from "+TABLE_NAME+"where id=#{id}")
     void deleteComment(int id);
 
     @Select("select count(*) from comment")
     int selectCountComment();
+
+    @Select({"select", SELECT_FIELDS, "from ", TABLE_NAME })
+    List<Comment> selectComments();
 
 }

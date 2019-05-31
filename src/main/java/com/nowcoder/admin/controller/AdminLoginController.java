@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created with IDEA
  *
@@ -37,7 +39,7 @@ public class AdminLoginController {
     AdminMessageService adminMessageService;
 
     @RequestMapping(path = {"/root_login"}, method = {RequestMethod.POST})
-    public String rootLogin(Model model, @RequestParam("username") String username,
+    public String rootLogin(Model model, HttpSession session, @RequestParam("username") String username,
                             @RequestParam("password") String password) {
         if (adminLoginService.login(username, password)) {
             int user_num = adminUserService.countUser();
@@ -48,7 +50,7 @@ public class AdminLoginController {
             model.addAttribute("comNum", comment_num);
             model.addAttribute("quesNum", question_num);
             model.addAttribute("messNum", message_num);
-            model.addAttribute("name", username);
+            session.setAttribute("name", username);
             return "admin-index";
         }
         return "lyear_pages_login";

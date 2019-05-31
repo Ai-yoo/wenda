@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>用户列表 - 光年(Light Year Admin)后台管理系统模板</title>
+<title>单选框 - 光年(Light Year Admin)后台管理系统模板</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
 <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
 <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -27,18 +27,58 @@
         
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item"> <a href="ind ex.html"><i class="mdi mdi-home"></i> 后台首页</a> </li>
+            <li class="nav-item"> <a href="index.html"><i class="mdi mdi-home"></i> 后台首页</a> </li>
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> UI 元素</a>
+              <ul class="nav nav-subnav">
+                <li> <a href="lyear_ui_buttons.html">按钮</a> </li>
+                <li> <a href="lyear_ui_cards.html">卡片</a> </li>
+                <li> <a href="lyear_ui_grid.html">格栅</a> </li>
+                <li> <a href="lyear_ui_icons.html">图标</a> </li>
+                <li> <a href="lyear_ui_tables.html">表格</a> </li>
+                <li> <a href="lyear_ui_modals.html">模态框</a> </li>
+                <li> <a href="lyear_ui_tooltips_popover.html">提示 / 弹出框</a> </li>
+                <li> <a href="lyear_ui_alerts.html">警告框</a> </li>
+                <li> <a href="lyear_ui_pagination.html">分页</a> </li>
+                <li> <a href="lyear_ui_progress.html">进度条</a> </li>
+                <li> <a href="lyear_ui_tabs.html">标签页</a> </li>
+                <li> <a href="lyear_ui_typography.html">排版</a> </li>
+                <li> <a href="lyear_ui_step.html">步骤</a> </li>
+                <li> <a href="lyear_ui_other.html">其他</a> </li>
+              </ul>
+            </li>
             <li class="nav-item nav-item-has-subnav active open">
+              <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> 表单</a>
+              <ul class="nav nav-subnav">
+                <li> <a href="lyear_forms_elements.html">基本元素</a> </li>
+                <li class="active"> <a href="lyear_forms_radio.html">单选框</a> </li>
+                <li> <a href="lyear_forms_checkbox.html">复选框</a> </li>
+                <li> <a href="lyear_forms_switch.html">开关</a> </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 示例页面</a>
               <ul class="nav nav-subnav">
-                  <li> <a href="/listuser">用户列表</a> </li>
-                  <li> <a href="lyear_pages_doc.html">问题列表</a> </li>
-                  <li> <a href="lyear_pages_doc.html">评论列表</a> </li>
-                <!--<li> <a href="lyear_pages_rabc.html">设置权限</a> </li>-->
-                <!--<li> <a href="lyear_pages_add_doc.html">新增文档</a> </li>-->
-                <!--<li> <a href="lyear_pages_guide.html">表单向导</a> </li>-->
-                <!--<li> <a href="lyear_pages_login.html">登录页面</a> </li>-->
-                <!--<li> <a href="lyear_pages_error.html">错误页面</a> </li>-->
+                <li> <a href="lyear_pages_doc.html">文档列表</a> </li>
+                <li> <a href="lyear_pages_gallery.html">图库列表</a> </li>
+                <li> <a href="lyear_pages_config.html">网站配置</a> </li>
+                <li> <a href="lyear_pages_rabc.html">设置权限</a> </li>
+                <li> <a href="lyear_pages_add_doc.html">新增文档</a> </li>
+                <li> <a href="lyear_pages_guide.html">表单向导</a> </li>
+                <li> <a href="lyear_pages_login.html">登录页面</a> </li>
+                <li> <a href="lyear_pages_error.html">错误页面</a> </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)"><i class="mdi mdi-language-javascript"></i> JS 插件</a>
+              <ul class="nav nav-subnav">
+                <li> <a href="lyear_js_datepicker.html">日期选取器</a> </li>
+                <li> <a href="lyear_js_sliders.html">滑块</a> </li>
+                <li> <a href="lyear_js_colorpicker.html">选色器</a> </li>
+                <li> <a href="lyear_js_chartjs.html">Chart.js</a> </li>
+                <li> <a href="lyear_js_jconfirm.html">对话框</a> </li>
+                <li> <a href="lyear_js_tags_input.html">标签插件</a> </li>
+                <li> <a href="lyear_js_notify.html">通知消息</a> </li>
               </ul>
             </li>
           </ul>
@@ -64,14 +104,14 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> 示例页面 - 用户列表 </span>
+            <span class="navbar-page-title"> 表单 - 单选框 </span>
           </div>
           
           <ul class="topbar-right">
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
-                <span>${name} <span class="caret"></span></span>
+                <span>笔下光年 <span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
@@ -224,103 +264,106 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
-              <div class="card-toolbar clearfix">
-                <form class="pull-right search-bar" method="get" action="#!" role="form">
-                  <div class="input-group">
-                    <div class="input-group-btn">
-                      <input type="hidden" name="search_field" id="search-field" value="title">
-                      <button class="btn btn-default dropdown-toggle" id="search-btn" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                      标题 <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu">
-                        <li> <a tabindex="-1" href="javascript:void(0)" data-field="title">标题</a> </li>
-                        <li> <a tabindex="-1" href="javascript:void(0)" data-field="cat_name">栏目</a> </li>
-                      </ul>
-                    </div>
-                    <input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">
-                  </div>
-                </form>
-                <div class="toolbar-btn-action">
-                  <!--<a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>-->
-                  <button name="open" class="btn btn-success m-r-5" onclick="open()"><i class="mdi mdi-check"></i> 启用</button>
-                  <button name="close" class="btn btn-warning m-r-5" onclick="close()"><i class="mdi mdi-block-helper"></i> 禁用</button>
-                  <button name="del" class="btn btn-danger" onclick="del()"><i class="mdi mdi-window-close"></i> 删除</button>
-                </div>
-              </div>
+              <div class="card-header"><h4>基本样式</h4></div>
               <div class="card-body">
                 
-                <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" id="check-all" value="${vo.user.id}"><span></span>
-                          </label>
-                        </th>
-                        <th>编号</th>
-                        <th>用户名</th>
-                        <th>头像url</th>
-                        <th>邮箱</th>
-                        <th>状态</th>
-                        <th>操作</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    #foreach($vo in $vos)
-                      <tr>
-                        <td>
-                          <label class="lyear-checkbox checkbox-primary">
-                            <input type="checkbox" name="ids" value="${vo.user.id}"><span></span>
-                          </label>
-                        </td>
-                        <td>${vo.user.id}</td>
-                        <td>${vo.user.name}</td>
-                        <td>${vo.user.headUrl}</td>
-                        <td>${vo.user.email}</td>
-                        <td>
-                          #if(${vo.user.state}==0)
-                          <font class="text-success">
-                            正常
-                          </font>
-                          #else
-                          <font class="text-danger">
-                            禁用
-                          </font>
-                          #end
-                        </td>
-                        <td>
-                          <div class="btn-group">
-                            <a class="btn btn-xs btn-default" href="/close_user?id=${vo.user.id}" title="禁用" data-toggle="tooltip"><i class="mdi mdi-lightbulb"></i></a>
-                            <a class="btn btn-xs btn-default" href="/open_user?id=${vo.user.id}" title="启用" data-toggle="tooltip"><i class="mdi mdi-lightbulb-on"></i></a>
-                            <a class="btn btn-xs btn-default" href="/del_user?id=${vo.user.id}" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                    #end
-                    </tbody>
-                  </table>
+                <p>将 <code>.checkbox</code> 类添加到<code>&lt;label&gt;</code>。</p>
+                <div class="example-box">
+                  <label class="lyear-radio">
+                    <input type="radio" name="r1">
+                    <span>默认单选框</span>
+                  </label>
+                  <label class="lyear-radio radio-grey m-t-10">
+                    <input type="radio" name="r1">
+                    <span>灰色单选框</span>
+                  </label>
+                  <label class="lyear-radio radio-primary m-t-10">
+                    <input type="radio" checked="" name="r1">
+                    <span>主色单选框</span>
+                  </label>
+                  <label class="lyear-radio m-t-10">
+                    <input type="radio" disabled="" name="r1">
+                    <span>禁用的</span>
+                  </label>
                 </div>
-                <!--<ul class="pagination">-->
-                  <!--<li class="disabled"><span>«</span></li>-->
-                  <!--<li class="active"><span>1</span></li>-->
-                  <!--<li><a href="#1">2</a></li>-->
-                  <!--<li><a href="#1">3</a></li>-->
-                  <!--<li><a href="#1">4</a></li>-->
-                  <!--<li><a href="#1">5</a></li>-->
-                  <!--<li><a href="#1">6</a></li>-->
-                  <!--<li><a href="#1">7</a></li>-->
-                  <!--<li><a href="#1">8</a></li>-->
-                  <!--<li class="disabled"><span>...</span></li>-->
-                  <!--<li><a href="#!">14452</a></li>-->
-                  <!--<li><a href="#!">14453</a></li>-->
-                  <!--<li><a href="#!">»</a></li>-->
-                <!--</ul>-->
-       
+                
+                <p class="m-t-10">对于内联复选框 <code>.checkbox-inline</code>。</p>
+                <div class="example-box">
+                  <label class="lyear-radio radio-inline radio-primary">
+                    <input type="radio" name="e"><span>羽毛球</span>
+                  </label>
+                  <label class="lyear-radio radio-inline radio-primary">
+                    <input type="radio" name="e"><span>冰球</span>
+                  </label>
+                  <label class="lyear-radio radio-inline radio-primary">
+                    <input type="radio" name="e"><span>网球</span>
+                  </label>
+                </div>
+                
               </div>
             </div>
+            
+            <div class="card">
+              <div class="card-header"><h4>颜色</h4></div>
+              <div class="card-body">
+                
+                <p>添加 <code>.checkbox-*</code> 用于更改复选框的外观：<code>.checkbox-primary</code> <code>.checkbox-info</code>...</p>
+                <div class="example-box">
+                  <label class="lyear-radio radio-primary">
+                    <input type="radio" checked="">
+                    <span>Primary（主色）</span>
+                  </label>
+                  <label class="lyear-radio radio-success m-t-10">
+                    <input type="radio" checked="">
+                    <span>Success（成功）</span>
+                  </label>
+                  <label class="lyear-radio radio-secondary m-t-10">
+                    <input type="radio" checked="">
+                    <span>Secondary（灰色）</span>
+                  </label>
+                  <label class="lyear-radio radio-info m-t-10">
+                    <input type="radio" checked="">
+                    <span>Info（一般信息）</span>
+                  </label>
+                  <label class="lyear-radio radio-warning m-t-10">
+                    <input type="radio" checked="">
+                    <span>Warning（警告）</span>
+                  </label>
+                  <label class="lyear-radio radio-danger m-t-10">
+                    <input type="radio" checked="">
+                    <span>Danger（警告）</span>
+                  </label>
+                  <label class="lyear-radio radio-dark m-t-10">
+                    <input type="radio" checked="">
+                    <span>Dark（黑色）</span>
+                  </label>
+                  <label class="lyear-radio radio-purple m-t-10">
+                    <input type="radio" checked="">
+                    <span>Purple（紫色）</span>
+                  </label>
+                  <label class="lyear-radio radio-pink m-t-10">
+                    <input type="radio" checked="">
+                    <span>Pink（粉红色）</span>
+                  </label>
+                  <label class="lyear-radio radio-cyan m-t-10">
+                    <input type="radio" checked="">
+                    <span>Cyan（青色）</span>
+                  </label>
+                  <label class="lyear-radio radio-yellow m-t-10">
+                    <input type="radio" checked="">
+                    <span>Yellow（黄色）</span>
+                  </label>
+                  <label class="lyear-radio radio-brown m-t-10">
+                    <input type="radio" checked="">
+                    <span>Brown（棕色）</span>
+                  </label>
+                </div>
+                
+              </div>
+            </div>
+            
           </div>
-          
+                    
         </div>
         
       </div>
@@ -334,50 +377,5 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="js/main.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $('.search-bar .dropdown-menu a').click(function() {
-        var field = $(this).data('field') || '';
-        $('#search-field').val(field);
-        $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
-    });
-});
-function del(){
-    obj = document.getElementsByName("ids");
-    check_val = [];
-    for(k in obj){
-        if(obj[k].checked)
-            check_val.push(obj[k].value);
-    }
-    alert(check_val);
-    window.location.href='/del_users?ids='+check_val;
-}
-</script>
-<script>
-    function close(){
-        alert("close");
-        obj = document.getElementsByName("ids");
-        check_val = [];
-        for(k in obj){
-            if(obj[k].checked)
-                check_val.push(obj[k].value);
-        }
-        alert(check_val);
-        window.location.href='/close_users?ids='+check_val;
-    }
-</script>
-<script>
-    function open(){
-        alert("open");
-        obj = document.getElementsByName("ids");
-        check_val = [];
-        for(k in obj){
-            if(obj[k].checked)
-                check_val.push(obj[k].value);
-        }
-        alert(check_val);
-        window.location.href='/open_users?ids='+check_val;
-    }
-</script>
 </body>
 </html>

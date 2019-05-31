@@ -18,7 +18,7 @@ public class AdminUserController {
     @Autowired
     AdminUserService adminUserService;
 
-    @RequestMapping(path = "close_users", method = RequestMethod.GET)
+    @RequestMapping(path = "/close_users", method = RequestMethod.GET)
     public String closeUser(@RequestParam("ids") int[] ids) {
         for (int id : ids) {
             adminUserService.closeUser(id);
@@ -26,13 +26,13 @@ public class AdminUserController {
         return "redirect:/listuser";
     }
 
-    @RequestMapping(path = "close_user", method = RequestMethod.GET)
+    @RequestMapping(path = "/close_user", method = RequestMethod.GET)
     public String closeUser(@RequestParam("id") int id) {
         adminUserService.closeUser(id);
         return "redirect:/listuser";
     }
 
-    @RequestMapping(path = "open_users", method = RequestMethod.GET)
+    @RequestMapping(path = "/open_users", method = RequestMethod.GET)
     public String openUsers(@RequestParam("ids") int[] ids) {
         for (int id : ids) {
             adminUserService.openUser(id);
@@ -40,13 +40,13 @@ public class AdminUserController {
         return "redirect:/listuser";
     }
 
-    @RequestMapping(path = "open_user", method = RequestMethod.GET)
+    @RequestMapping(path = "/open_user", method = RequestMethod.GET)
     public String openUser(@RequestParam("id") int id) {
         adminUserService.openUser(id);
         return "redirect:/listuser";
     }
 
-    @RequestMapping(path = "del_users", method = RequestMethod.GET)
+    @RequestMapping(path = "/del_users", method = RequestMethod.GET)
     public String delUsers(@RequestParam("ids") int[] ids) {
         for (int id : ids) {
             adminUserService.delUser(id);
@@ -54,7 +54,7 @@ public class AdminUserController {
         return "redirect:/listuser";
     }
 
-    @RequestMapping(path = "del_user", method = RequestMethod.GET)
+    @RequestMapping(path = "/del_user", method = RequestMethod.GET)
     public String delUser(@RequestParam("id") int id) {
         adminUserService.delUser(id);
         return "redirect:/listuser";
