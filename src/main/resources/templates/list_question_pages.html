@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>问题列表 - 光年(Light Year Admin)后台管理系统模板</title>
+<title>问题列表</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
 <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
 <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -32,8 +32,8 @@
               <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 示例页面</a>
               <ul class="nav nav-subnav">
                   <li> <a href="/listuser">用户列表</a> </li>
-                  <li> <a href="lyear_pages_doc.html">问题列表</a> </li>
-                  <li> <a href="lyear_pages_doc.html">评论列表</a> </li>
+                  <li> <a href="/listquestion">问题列表</a> </li>
+                  <li> <a href="/listcomment">评论列表</a> </li>
                 <!--<li> <a href="lyear_pages_rabc.html">设置权限</a> </li>-->
                 <!--<li> <a href="lyear_pages_add_doc.html">新增文档</a> </li>-->
                 <!--<li> <a href="lyear_pages_guide.html">表单向导</a> </li>-->
@@ -259,9 +259,9 @@
                           </label>
                         </th>
                         <th>编号</th>
-                        <th>用户名</th>
-                        <th>头像url</th>
-                        <th>邮箱</th>
+                        <th>标题</th>
+                        <th>内容</th>
+                        <th>创建时间</th>
                         <th>状态</th>
                         <th>操作</th>
                       </tr>
@@ -274,10 +274,10 @@
                             <input type="checkbox" name="ids" value="${vo.user.id}"><span></span>
                           </label>
                         </td>
-                        <td>${vo.user.id}</td>
-                        <td>${vo.user.name}</td>
-                        <td>${vo.user.headUrl}</td>
-                        <td>${vo.user.email}</td>
+                        <td>${vo.question.id}</td>
+                        <td>${vo.question.title}</td>
+                        <td>${vo.question.content}</td>
+                        <td>$date.format('yyyy年MM月dd日 HH:mm:ss',${vo.question.createdDate})</td>
                         <td>
                           #if(${vo.user.state}==0)
                           <font class="text-success">
@@ -291,9 +291,9 @@
                         </td>
                         <td>
                           <div class="btn-group">
-                            <a class="btn btn-xs btn-default" href="/close_user?id=${vo.user.id}" title="禁用" data-toggle="tooltip"><i class="mdi mdi-lightbulb"></i></a>
-                            <a class="btn btn-xs btn-default" href="/open_user?id=${vo.user.id}" title="启用" data-toggle="tooltip"><i class="mdi mdi-lightbulb-on"></i></a>
-                            <a class="btn btn-xs btn-default" href="/del_user?id=${vo.user.id}" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
+                            <a class="btn btn-xs btn-default" href="/close_question?id=${vo.question.id}" title="禁用" data-toggle="tooltip"><i class="mdi mdi-lightbulb"></i></a>
+                            <a class="btn btn-xs btn-default" href="/open_question?id=${vo.question.id}" title="启用" data-toggle="tooltip"><i class="mdi mdi-lightbulb-on"></i></a>
+                            <a class="btn btn-xs btn-default" href="/del_question?id=${vo.question.id}" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
                           </div>
                         </td>
                       </tr>
@@ -350,7 +350,7 @@ function del(){
             check_val.push(obj[k].value);
     }
     alert(check_val);
-    window.location.href='/del_users?ids='+check_val;
+    window.location.href='/del_questions?ids='+check_val;
 }
 </script>
 <script>
@@ -363,7 +363,7 @@ function del(){
                 check_val.push(obj[k].value);
         }
         alert(check_val);
-        window.location.href='/close_users?ids='+check_val;
+        window.location.href='/close_questions?ids='+check_val;
     }
 </script>
 <script>
@@ -376,7 +376,7 @@ function del(){
                 check_val.push(obj[k].value);
         }
         alert(check_val);
-        window.location.href='/open_users?ids='+check_val;
+        window.location.href='/open_questions?ids='+check_val;
     }
 </script>
 </body>
