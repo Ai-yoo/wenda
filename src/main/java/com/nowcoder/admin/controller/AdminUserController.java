@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class AdminUserController {
     }
 
     @RequestMapping(path = "/listuser", method = RequestMethod.GET)
-    public String listUser(Model model, @RequestParam(defaultValue = "1",value = "pn") Integer pageNum) {
+    public String listUser(HttpSession session,Model model, @RequestParam(defaultValue = "1",value = "pn") Integer pageNum) {
         //下面分页设置pageSize在获取列表前面才有效
         PageHelper.startPage(pageNum, 10);
         List<User> userList = adminUserService.listUser();
@@ -77,6 +78,10 @@ public class AdminUserController {
         System.out.println(pageInfo.toString());
         model.addAttribute("vos", vos);
         model.addAttribute("pageInfo", pageInfo);
-        return "list_user_pages";
+        if (session.getAttribute("name") == null) {
+            return "lyear_pages_login";
+        } else {
+            return "list_user_pages";
+        }
     }
 }

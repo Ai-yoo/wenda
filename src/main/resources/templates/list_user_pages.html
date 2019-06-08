@@ -21,7 +21,10 @@
        
       <!-- logo -->
       <div id="logo" class="sidebar-header">
-        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+        <a href="/admin">
+          <!--<img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" />-->
+          <h1>爱问</h1>
+        </a>
       </div>
       <div class="lyear-layout-sidebar-scroll">
         
@@ -74,9 +77,9 @@
                 <span>${name} <span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
-                <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                <!--<li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>-->
+                <!--<li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>-->
+                <!--<li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>-->
                 <li class="divider"></li>
                 <li> <a href="lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
               </ul>
@@ -242,8 +245,8 @@
                 </form>
                 <div class="toolbar-btn-action">
                   <!--<a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>-->
-                  <button name="open" class="btn btn-success m-r-5" onclick="open()"><i class="mdi mdi-check"></i> 启用</button>
-                  <button name="close" class="btn btn-warning m-r-5" onclick="close()"><i class="mdi mdi-block-helper"></i> 禁用</button>
+                  <!--<button name="open" class="btn btn-success m-r-5" onclick="open()"><i class="mdi mdi-check"></i> 启用</button>-->
+                  <!--<button name="close" class="btn btn-warning m-r-5" onclick="close()"><i class="mdi mdi-block-helper"></i> 禁用</button>-->
                   <button name="del" class="btn btn-danger" onclick="del()"><i class="mdi mdi-window-close"></i> 删除</button>
                 </div>
               </div>
@@ -304,7 +307,8 @@
                   总页数：${pageInfo.pages}
                 <ul class="pagination">
                   #if(${pageInfo.hasPreviousPage})
-                    <li class="" href="/listuser?pn=${pageInfo.pageNum - 1}"><span>«</span></li>
+                    #set($curpage= $pageInfo.pageNum - 1)
+                    <li class=""><a href="/listuser?pn=$curpage"><span>«</span></a></li>
                   #end
                   #foreach(${page_num} in ${pageInfo.navigatepageNums})
                     #if(${pageInfo.pageNum}==${page_num})
@@ -315,7 +319,8 @@
                     #end
                   #end
                   #if(${pageInfo.hasNextPage})
-                    <li class="" href="/listuser?pn=${pageInfo.pageNum + 1}"><span>»</span></li>
+                    #set($curpage= $pageInfo.pageNum + 1)
+                    <li class=""><a href="/listuser?pn=$curpage"><span>»</span></a></li>
                   #end
                 </ul>
        

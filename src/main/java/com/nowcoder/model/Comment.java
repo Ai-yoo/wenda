@@ -67,11 +67,11 @@ public class Comment {
         this.createdDate = createdDate;
     }
 
-    public int getStatus() {
+    public int getState() {
         return state;
     }
 
-    public void setStatus(int state) {
+    public void setState(int state) {
         this.state = state;
     }
 }

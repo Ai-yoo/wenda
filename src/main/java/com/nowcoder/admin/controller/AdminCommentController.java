@@ -1,5 +1,7 @@
 package com.nowcoder.admin.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nowcoder.admin.service.AdminCommentService;
 import com.nowcoder.model.Comment;
 import com.nowcoder.model.ViewObject;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +64,10 @@ public class AdminCommentController {
     }
 
     @RequestMapping(path = "/listcomment", method = RequestMethod.GET)
-    public String listUser(Model model) {
+    public String listUser(HttpSession session, Model model, @RequestParam(defaultValue = "1", value = "pn") Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
         List<Comment> commentList = adminCommentService.listComment();
+        PageInfo pageInfo = new PageInfo(commentList);
         List<ViewObject> vos = new ArrayList<>();
         for (Comment comment : commentList) {
             ViewObject vo = new ViewObject();
@@ -70,6 +75,11 @@ public class AdminCommentController {
             vos.add(vo);
         }
         model.addAttribute("vos", vos);
-        return "list_comment_pages";
+        model.addAttribute("pageInfo", pageInfo);
+        if (session.getAttribute("name") == null) {
+            return "lyear_pages_login";
+        } else {
+            return "list_comment_pages";
+        }
     }
 }
