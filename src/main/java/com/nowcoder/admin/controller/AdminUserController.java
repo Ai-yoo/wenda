@@ -1,5 +1,7 @@
 package com.nowcoder.admin.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.nowcoder.admin.service.AdminUserService;
 import com.nowcoder.model.User;
 import com.nowcoder.model.ViewObject;
@@ -61,15 +63,20 @@ public class AdminUserController {
     }
 
     @RequestMapping(path = "/listuser", method = RequestMethod.GET)
-    public String listUser(Model model) {
+    public String listUser(Model model, @RequestParam(defaultValue = "1",value = "pn") Integer pageNum) {
+        //下面分页设置pageSize在获取列表前面才有效
+        PageHelper.startPage(pageNum, 10);
         List<User> userList = adminUserService.listUser();
         List<ViewObject> vos = new ArrayList<>();
+        PageInfo pageInfo = new PageInfo(userList);
         for (User user : userList) {
             ViewObject vo = new ViewObject();
             vo.set("user", user);
             vos.add(vo);
         }
+        System.out.println(pageInfo.toString());
         model.addAttribute("vos", vos);
+        model.addAttribute("pageInfo", pageInfo);
         return "list_user_pages";
     }
 }

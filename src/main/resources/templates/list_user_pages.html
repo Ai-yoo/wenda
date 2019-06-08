@@ -301,20 +301,22 @@
                     </tbody>
                   </table>
                 </div>
+                  总页数：${pageInfo.pages}
                 <ul class="pagination">
-                  <li class="disabled"><span>«</span></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#1">2</a></li>
-                  <li><a href="#1">3</a></li>
-                  <li><a href="#1">4</a></li>
-                  <li><a href="#1">5</a></li>
-                  <li><a href="#1">6</a></li>
-                  <li><a href="#1">7</a></li>
-                  <li><a href="#1">8</a></li>
-                  <li class="disabled"><span>...</span></li>
-                  <li><a href="#!">14452</a></li>
-                  <li><a href="#!">14453</a></li>
-                  <li><a href="#!">»</a></li>
+                  #if(${pageInfo.hasPreviousPage})
+                    <li class="" href="/listuser?pn=${pageInfo.pageNum - 1}"><span>«</span></li>
+                  #end
+                  #foreach(${page_num} in ${pageInfo.navigatepageNums})
+                    #if(${pageInfo.pageNum}==${page_num})
+                      <li class="active"><span>${page_num}</span></li>
+                    #end
+                    #if(${pageInfo.pageNum}!=${page_num})
+                      <li><a href="/listuser?pn=${page_num}">${page_num}</a></li>
+                    #end
+                  #end
+                  #if(${pageInfo.hasNextPage})
+                    <li class="" href="/listuser?pn=${pageInfo.pageNum + 1}"><span>»</span></li>
+                  #end
                 </ul>
        
               </div>
